@@ -1,18 +1,33 @@
 from flask import Flask, render_template, request, redirect, url_for
+import sys
+import  SqlConnection
 
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():  # put application's code here
-    #return the html file
-    return render_template('./index.html')
+sql_connection = SqlConnection.SqlConnetion()
 
+@app.route('/')
+def index():  # put application's code here
+    print("im here")
+    myDB= sql_connection.ConnectDB()
+    #export data from database table and represent it in html table
+    print("im here")
+    cursor = myDB.cursor()
+    cursor.execute("USE Attendence")
+    cursor.execute("SELECT * FROM Attendence")
+    data = cursor.fetchall()
+    cursor.close()
+    print(data)
+
+    return render_template('index.html', data=data)
 
 
 
 
 if __name__ == '__main__':
-    from waitress import serve
-    serve(app, host='127.0.0.1', port=5000)
+    sql_connection.SqlDataBase()
+    print('test')
+    # from waitress import serve
+    # serve(app, host='127.0.0.1', port=5000)
     app.run()
