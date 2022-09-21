@@ -18,8 +18,7 @@ def index():  # put application's code here
     cursor.execute("SELECT * FROM Attendence")
     data = cursor.fetchall()
     cursor.close()
-    print(data)
-
+    #print(data)
     return render_template('index.html', data=data)
 
 
