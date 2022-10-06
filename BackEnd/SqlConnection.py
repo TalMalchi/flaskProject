@@ -19,7 +19,7 @@ class SqlConnetion:
             password='root',
             host='db',
             port='3307',
-            #database='Attendence',
+            database='Attendence',
         )
         return mydb
 
@@ -35,7 +35,7 @@ class SqlConnetion:
             password='root',
             host='db',
             port='3307',
-            #database='Attendence',
+            database='Attendence',
         )
         cursor = mydb.cursor()
         cursor.execute("CREATE DATABASE IF NOT EXISTS Attendence")

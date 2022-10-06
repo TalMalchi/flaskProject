@@ -1,13 +1,6 @@
 version: '3'
 
 services:
-  app:
-    build: ./
-    links:
-      - db
-    ports:
-      - "5000:5000"
-
 
   db:
     image: mysql:8.0
@@ -17,9 +10,19 @@ services:
       MYSQL_ROOT_PASSWORD: root
 
     volumes:
-#        - db_data:/var/lib/mysql
-#        - ./docker/mysql/conf.d:/etc/mysql/conf.d
-       - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+      #        - db_data:/var/lib/mysql
+      #        - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+
+  app:
+    build: ./BackEnd
+    links:
+      - db
+    ports:
+      - "5000:5000"
+
+
+
 
 
 
