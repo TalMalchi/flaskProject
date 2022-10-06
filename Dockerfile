@@ -1,15 +1,16 @@
-FROM python:3.6
+FROM python
 
-EXPORT 5000
 
-WORKDIR /flaskProject
+WORKDIR /app
 ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST= 127.0.0.1
+ENV FLASK_RUN_HOST=127.0.0.1
 
 COPY requirements.txt .
 
 RUN python -m pip install --upgrade pip
-RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
 
 COPY . .
 

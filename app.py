@@ -1,7 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for
-import sys
-import  SqlConnection
-
+from flask import Flask, render_template
+import SqlConnection
 
 app = Flask(__name__)
 
@@ -29,4 +27,6 @@ if __name__ == '__main__':
     print('test')
     # from waitress import serve
     # serve(app, host='127.0.0.1', port=5000)
-    app.run()
+
+    app.run(host='0.0.0.0', port=5000, debug=True)
+

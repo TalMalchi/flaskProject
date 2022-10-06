@@ -10,9 +10,16 @@ class SqlConnetion:
 
     def ConnectDB(self):
         mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            passwd="malchital1",
+            # user='root',
+            # password='root',
+            # host='db',
+            # port='3306',
+            # database='Attendence',
+            user='root',
+            password='root',
+            host='db',
+            port='3307',
+            #database='Attendence',
         )
         return mydb
 
@@ -21,9 +28,14 @@ class SqlConnetion:
         # save attendance path dir
         csvFile = 'attendance.csv'
         mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            passwd="malchital1",
+            # host="localhost",
+            # user="root",
+            # passwd="malchital1",
+            user='root',
+            password='root',
+            host='db',
+            port='3307',
+            #database='Attendence',
         )
         cursor = mydb.cursor()
         cursor.execute("CREATE DATABASE IF NOT EXISTS Attendence")
