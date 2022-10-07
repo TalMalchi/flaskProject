@@ -18,6 +18,10 @@ This has done by **_yona bloy_** https://github.com/natibloy/bynet.git .
 - Open your browser on `localhost:5005`
 
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/93086649/194542221-b738c094-c211-4cc0-972c-31a53474f223.gif)
+
+
+https://user-images.githubusercontent.com/93086649/194543363-ce1c2b23-faec-4ee5-b2a9-10d23b1b21e8.mp4
+
+
 
 
