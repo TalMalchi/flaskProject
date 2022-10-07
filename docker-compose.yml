@@ -2,24 +2,35 @@ version: '3'
 
 services:
 
+  app:
+     build: ./BackEnd
+     links:
+       - db
+     ports:
+       - "5000:5000"
+
+
   db:
     image: mysql:8.0
-    ports:
-      - "3307:3306"
+
     environment:
       MYSQL_ROOT_PASSWORD: root
 
-    volumes:
-      #        - db_data:/var/lib/mysql
-      #        - ./docker/mysql/conf.d:/etc/mysql/conf.d
-      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
-
-  app:
-    build: ./BackEnd
-    links:
-      - db
     ports:
-      - "5000:5000"
+      - "3307:3306"
+
+
+
+    volumes:
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+      #use init.sql in db in flask project directory to create database and tables
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping" ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
 
 
 
