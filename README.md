@@ -14,8 +14,8 @@ This has done by **_yona bloy_** https://github.com/natibloy/bynet.git .
 #### How to run?
 - Clone the project 
 - Make sure you have Docker installed on your computer
-- Run on your terminal `docker-compose -f up`
-- Open your browser on `localhost:5000`
+- Run on your terminal `docker-compose up`
+- Open your browser on `localhost:5005`
 
 
 
