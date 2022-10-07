@@ -48,15 +48,20 @@ def get_data(csvfile):
     df = df.replace('\"', '', regex=True)
     df = df.replace('=', '', regex=True)
     # calculate maximal overall login time in the file:
-    df.sort_values(by=[LEAVE_TIME], ascending=False, inplace=True)  # descending order by leave time
-    latest = str(df.iloc[0, LEAVE_TIME_NUM]).rsplit(" ")[1]     # take first row after sort
+    # descending order by leave time
+    df.sort_values(by=[LEAVE_TIME], ascending=False, inplace=True)
+    latest = str(df.iloc[0, LEAVE_TIME_NUM]).rsplit(
+        " ")[1]     # take first row after sort
     latest_hour = int(latest.rsplit(":")[0])
     latest_min = int(latest.rsplit(":")[1])
-    df.sort_values(by=[JOIN_TIME], ascending=True, inplace=True)    # ascending order by join time
-    earliest = str(df.iloc[0, JOIN_TIME_NUM]).rsplit(" ")[1]  # take first row after sort
+    # ascending order by join time
+    df.sort_values(by=[JOIN_TIME], ascending=True, inplace=True)
+    earliest = str(df.iloc[0, JOIN_TIME_NUM]).rsplit(" ")[
+        1]  # take first row after sort
     earliest_hour = int(earliest.rsplit(":")[0])
     earliest_min = int(earliest.rsplit(":")[1])
-    max_overall = (latest_hour - earliest_hour) * 60 + (latest_min-earliest_min)
+    max_overall = (latest_hour - earliest_hour) * \
+        60 + (latest_min-earliest_min)
     return df, max_overall
 
 
@@ -95,7 +100,8 @@ def check_hebrew(s):
     :return: bool
     """
     for c in s:
-        if ord('\u05d0') <= ord(c) <= ord('\u05ea'):    # if the character is in range of the unicode of hebrew letters
+        # if the character is in range of the unicode of hebrew letters
+        if ord('\u05d0') <= ord(c) <= ord('\u05ea'):
             return True
     return False
 
@@ -117,11 +123,13 @@ def dict_init(df, time_dict):
         if "bynet" in file_email or "8200" in file_email or "nan" in file_email:  # skipping the non-students
             continue
         file_name = str(row[NAMES])
-        if not check_spell(username, time_dict):  # if the mail is not already in the dictionary- add it
+        # if the mail is not already in the dictionary- add it
+        if not check_spell(username, time_dict):
             time_dict[username] = {'time': [], 'overall': 0, 'name': file_name}
         else:   # if it is then update it
             username = check_spell(username, time_dict)   # correcting
-            if not check_hebrew(file_name):   # if the name in the file is not in hebrew
+            # if the name in the file is not in hebrew
+            if not check_hebrew(file_name):
                 # if there is a more accurate name let's update it
                 if len(time_dict[username]['name']) < len(file_name):
                     time_dict[username]['name'] = file_name
@@ -141,7 +149,8 @@ def dict_update(email, time_dict, start, end, overall):
     :param end: string logout time
     :param overall: string overall logged in time
     """
-    time_dict[email]['time'].append(start.rsplit(' ')[1] + " - " + end.rsplit(' ')[1])
+    time_dict[email]['time'].append(
+        start.rsplit(' ')[1] + " - " + end.rsplit(' ')[1])
     time_dict[email]['overall'] += int(overall.replace(' mins', ''))
 
 
@@ -155,15 +164,19 @@ def dict_build(df, time_dict):
     for index, row in df.iterrows():
         file_email = str(row[EMAILS])
         username = file_email.rsplit('@')[0]
-        if time_dict.get(username):  # if the email is spelled correctly then it is in the dictionary
-            dict_update(username, time_dict, row[JOIN_TIME], row[LEAVE_TIME], row[OVERALL_TIME])
-        elif "bynet" in file_email or "8200" in file_email or "nan" in file_email:  # skipping the non-students:
+        # if the email is spelled correctly then it is in the dictionary
+        if time_dict.get(username):
+            dict_update(username, time_dict,
+                        row[JOIN_TIME], row[LEAVE_TIME], row[OVERALL_TIME])
+        # skipping the non-students:
+        elif "bynet" in file_email or "8200" in file_email or "nan" in file_email:
             continue
         else:
             # checking if is misspelled and correcting it:
             username = check_spell(username, time_dict)
             if username:  # if such email exists then consider it as a misspelled email
-                dict_update(username, time_dict, row[JOIN_TIME], row[LEAVE_TIME], row[OVERALL_TIME])
+                dict_update(username, time_dict,
+                            row[JOIN_TIME], row[LEAVE_TIME], row[OVERALL_TIME])
     special_cases(time_dict)
     return time_dict
 
@@ -242,7 +255,8 @@ def add_col(df, col_name, time_dict):
     :param time_dict: dictionary of login time per user
     :return:
     """
-    df = pd.DataFrame(df, index=time_dict.keys())   # updating the indexes to be up-to-date with all files
+    df = pd.DataFrame(df, index=time_dict.keys(
+    ))   # updating the indexes to be up-to-date with all files
     df[col_name] = df.index.map(time_dict)
     return df
 
@@ -299,4 +313,3 @@ if __name__ == '__main__':
     new_df = add_avg_time(new_df, sum_maxes)
     new_df = add_names(new_df, init_dict)
     new_df.to_csv('attendance.csv')
-
