@@ -5,7 +5,11 @@ The application shows the attendence of each student in the course
 
 ### How it works?
 Given csv files that Webex takes out after every session, we have to calcuate the The percentage of attendance of each student.
-This has done by **_yona bloy_** https://github.com/natibloy/bynet.git
+This has done by **_yona bloy_** https://github.com/natibloy/bynet.git .  
+
+***BackEnd Directory*** - Init the application using Flask. Read all the data from the DataBase and share it to the app.  
+***db Directory***  - Init the DataBase. Create new data base using MySql, and new table for the app.
+
 
 #### How to run?
 - Clone the project 
