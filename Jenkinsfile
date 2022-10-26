@@ -8,13 +8,7 @@ pipeline{
                 """
             }
         }
-        stage('Run'){
-            steps{
-                sh """
-                    docker-compose up -d
-                """
-            }
-        }
+    
         stage('Test'){
             steps{
                 echo 'Testing...'
