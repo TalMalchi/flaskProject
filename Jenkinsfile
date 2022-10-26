@@ -3,7 +3,16 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                echo 'Building...'
+                sh """
+                    docker-compose build --no-cache
+                """
+            }
+        }
+        stage('Run'){
+            steps{
+                sh """
+                    docker-compose up -d
+                """
             }
         }
         stage('Test'){
