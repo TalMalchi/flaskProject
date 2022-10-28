@@ -15,10 +15,12 @@ Our app will connect to the same sql server- using the same database and the sam
 
 
 #### How to run?
+```
 - Clone the project 
 - Make sure you have Docker installed on your computer
 - Run on your terminal `docker-compose up`
 - Open your browser on `localhost:5005`
+```
 
 
 

@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    enviroment{
+    environment{
         dockerhub=credentials('dockerhub')
         
     }
@@ -8,7 +8,7 @@ pipeline{
         stage('Build'){
             steps{
                 sh """
-                    docker-compose build -t talmalchi/Flask-App:latest .
+                    docker build -t talmalchi/flaskapp:latest BackEnd/
                 """
             }
         }
@@ -25,7 +25,7 @@ pipeline{
         stage('Push'){
             steps{
                 sh """
-                    docker push talmalchi/Flask-App:latest
+                    docker push talmalchi/flaskapp:latest
                 """
             }
         }
