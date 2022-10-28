@@ -8,7 +8,7 @@ pipeline{
         stage('Build'){
             steps{
                 sh """
-                    docker-compose build 
+                    docker-compose build -t talmalchi/flaskapp:latest . 
                 """
             }
         }
@@ -25,7 +25,7 @@ pipeline{
         stage('Push'){
             steps{
                 sh """
-                    docker push $BUILD_NUMBER
+                    docker push talmalchi/flaskapp:latest
                 """
             }
         }
