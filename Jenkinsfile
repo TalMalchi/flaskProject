@@ -8,7 +8,7 @@ pipeline{
         stage('Build'){
             steps{
                 sh """
-                    docker-compose build -t talmalchi/Flask-App:latest .
+                    docker-compose build 
                 """
             }
         }
