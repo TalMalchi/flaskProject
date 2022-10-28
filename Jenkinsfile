@@ -25,7 +25,7 @@ pipeline{
         stage('Push'){
             steps{
                 sh """
-                    docker push talmalchi/Flask-App:latest
+                    docker push talmalchi/flask-app:latest
                 """
             }
         }
