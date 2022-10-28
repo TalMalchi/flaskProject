@@ -1,21 +1,32 @@
-## Attendence Project
+## Final Attendence Project - Bynet DevOps Bootcamp
 
-This project represent an application made with Falsk (on Python) that connects to DataBase (using MySql).
-The application shows the attendence of each student in the course
-
-### How it works?
-Given csv files that Webex takes out after every session, we have to calcuate the The percentage of attendance of each student.
-This file has done by **_yona bloy_** https://github.com/natibloy/bynet.git .  
-We will connect to Sql server, insert to a table the final csv file we get from attendence function.  
-Our app will connect to the same sql server- using the same database and the same port, get all the data and share to web application.
-**docker-compose** will connect between the DataBase and the application.
-
-***BackEnd Directory*** - Init the application using Flask. Read all the data from the DataBase and share it to the app.  
-***db Directory***  - Init the DataBase. Create new data base using MySql, and new table for the app.
+This project represents an application made with Falsk (Python) that connects to DataBase (MySql).  
+The application shows the attendence of each student in the course.
+My application will build with ****docker-compose****.The Database, and the backend of the app will be in different containers, and `docker-compose.yaml` file will connect between them.
 
 
-#### How to run?
-```
+### :bowing_woman: About
+Given csv files that Webex takes out after every session, we have to calcuate the the percentage of attendance of each student.
+This function has done by **_yona bloy_** https://github.com/natibloy/bynet.git .  
+I will connect to Sql server, insert to a table the final csv file we get from attendence function.  
+My app will connect to the same sql server- using the same database and the same port, get all the data and share to web application.
+
+
+### :bookmark_tabs: Explanation about the classes   
+- ***db***  - Init the DataBase using MySql. Create new data base, and new table, that will be used by our application.  
+- ***BackEnd*** - Init the application using Flask. Connects to the database, read all the data, post it to the app, and shares it to the browser.   
+- ***templates*** - Represent all the FrontEnd of the app.  
+- ***Test*** - Will check that out app is up before it goes to the production. 
+
+### :infinity: CI/CD  
+I will create a pipeline using Jenkins, that will build, test and deploy the code automaticly.  
+The purpose of this proccess is to minimize human error and maintain a consistent process for how software is released. 
+
+### :sparkles: System Desgin 
+
+
+### :running_woman: How to run?
+```python
 - Clone the project 
 - Make sure you have Docker installed on your computer
 - Run on your terminal `docker-compose up`
