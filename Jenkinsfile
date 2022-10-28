@@ -32,6 +32,9 @@ pipeline{
         stage('Test'){
             steps{
                 echo 'Testing...'
+                sh """
+                    bash -x Test/test.sh
+                """
             }
         }
         stage('Deploy'){
