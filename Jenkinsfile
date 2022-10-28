@@ -8,7 +8,7 @@ pipeline{
         stage('Build'){
             steps{
                 sh """
-                    docker build -t talmalchi/flaskapp:latest . 
+                    docker build -t talmalchi/flaskapp:latest /BackEnd/
                 """
             }
         }
