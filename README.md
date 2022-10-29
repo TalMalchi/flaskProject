@@ -1,4 +1,4 @@
-# Final Attendence Project - Bynet DevOps Bootcamp
+# Final Attendence Project - DevOps Bootcamp
 
 
 
