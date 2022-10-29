@@ -33,6 +33,7 @@ pipeline{
             steps{
                 echo 'Testing...'
                 sh """
+                    docker-compose up
                     bash -x Test/test.sh
                 """
             }
