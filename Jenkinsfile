@@ -31,7 +31,7 @@ pipeline{
         }
         stage('Test'){
             steps{
-                echo 'Testing...'
+                echo 'Testing....'
                 sh """
                     docker-compose up
                     bash -x Test/test.sh
