@@ -5,6 +5,7 @@
 #Variables
 USER="ec2-user"
 HOME_DIR="/home/ec2-user"
+SECRET_KEY="/home/ec2-user/.ssh/id_dsa"
 machine=$1
 
 
@@ -17,9 +18,9 @@ machine=$1
 if [ $machine == "test" ]
 then
     echo "Deploying to test server"
-     scp -i /home/ec2-user/.ssh/id_dsa -r /var/lib/jenkins/workspace/* ec2-user@test:~
-     ssh -i /home/ec2-user/.ssh/id_dsa $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose build"
-     ssh -i /home/ec2-user/.ssh/id_dsa $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose up -d"
+    scp -i $SECRET_KEY -r /var/lib/jenkins/workspace/* ec2-user@test:~
+    ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose build"
+    ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose up -d"
     curl http://localhost:5005
 elif [ $machine == "production" ]
 then
