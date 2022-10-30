@@ -6,6 +6,7 @@ pipeline{
     }
     stages{
         stage('Build'){
+            echo 'Building...'
             steps{
                 sh """
                     docker build -t talmalchi/flaskapp:latest BackEnd/
@@ -13,6 +14,7 @@ pipeline{
             }
         }
         stage('Login'){
+            echo 'Login To DockerHub...'
             steps{  
                 sh """
                     echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin
@@ -23,24 +25,29 @@ pipeline{
 
         }
         stage('Push'){
+            echo 'Pushing To DockerHub...'
             steps{
+                
                 sh """
                     docker push talmalchi/flaskapp:latest
+                    docker rmi talmalchi/flaskapp:latest #CHECK THIS
+
                     
                 """
             }
         }
         stage('Test'){
-            steps{
-                echo 'Testing...'
+            echo 'Testing...'
+            steps{      
                 sh """
                     bash -x deploy.sh test
                 """
             }
         }
         stage('Deploy'){
+            echo 'Deploying...'
             steps{
-                echo 'Deploying...'
+                
                 sh """
                     chmod +x deploy.sh
                     bash -x deploy.sh prod

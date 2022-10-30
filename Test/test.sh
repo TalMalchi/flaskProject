@@ -30,6 +30,7 @@ then
     ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose build"
     ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose up -d"
     curl http://localhost:5005
+    ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose down"
 elif [ $machine == "production" ]
 
 # Deploy to production server and run the application
