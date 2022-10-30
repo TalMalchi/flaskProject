@@ -9,7 +9,7 @@ My application will build with ****docker-compose****.The Database, and the back
 ### :1st_place_medal: Using: 
 
 <span>
-  <img src="https://skillicons.dev/icons?i=python,flask,mysql,github,git,linux,docker,jenkins" />
+  <img src="https://skillicons.dev/icons?i=python,flask,mysql,github,git,linux,docker,jenkins,aws" />
 </span>
 
 ### :bowing_woman: About
