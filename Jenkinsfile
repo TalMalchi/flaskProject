@@ -26,6 +26,7 @@ pipeline{
             steps{
                 sh """
                     docker push talmalchi/flaskapp:latest
+                    
                 """
             }
         }
@@ -33,14 +34,16 @@ pipeline{
             steps{
                 echo 'Testing...'
                 sh """
-                    docker-compose up
-                    bash -x Test/test.sh
+                    bash -x deploy.sh test
                 """
             }
         }
         stage('Deploy'){
             steps{
                 echo 'Deploying...'
+                sh """
+                    bash -x deploy.sh prod
+                """
             }
         }
     }
