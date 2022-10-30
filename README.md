@@ -26,11 +26,15 @@ My app will connect to the same sql server- using the same database and the same
 - ***Test*** - Will check that out app is up before it goes to the production. 
 
 ### :infinity: CI/CD  
+I will use 3 seperate aws machine- for Jenkins, for testing, and for production.
+All of the machines will be connect with ssh, and private and public keys.  
 I will create a pipeline using Jenkins, that will build, test and deploy the code automaticly.    
 The purpose of this proccess is to minimize human error and maintain a consistent process for how software is released.   
-Each time there is any change in the code, i will commit it to GitHub. Jenkins will be triggerd by....., and will pull the changes from the repository.    
-The pipeline i created will check the changes, and will build a new image- using the docker file (in the BackEnd directory).  
-The new image will push to DockerHub, will be test and deploy to the production.    
+Each time there is any change in the code, i will commit it to GitHub. Jenkins will be triggerd by poll SCM, every few minute, and The Jenkins machine will pull the changes from the repository.    
+The first machine will check the changes, and will build a new image- using the docker file (in the BackEnd directory).  
+The new image will push to DockerHub.
+The Test and Production machine will use the ***desploy.sh*** script.
+Jenkins machine will transfer the project to test machine, using scp, and will test the app, then the will pass it to the production machine to desploy the app.      
 
 ### :sparkles: System Desgin   
 
