@@ -42,6 +42,7 @@ pipeline{
             steps{
                 echo 'Deploying...'
                 sh """
+                    chmod +x deploy.sh
                     bash -x deploy.sh prod
                 """
             }
