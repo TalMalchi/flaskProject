@@ -49,7 +49,7 @@ pipeline{
                 sshagent(['jenkins_ssh']) {
                     sh """
                         echo 'Testing...'
-                        ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/id_rsa
+                        ssh -o StrictHostKeyChecking=no -i /home/ec2-user/.ssh/id_dsa
                         bash -x deploy.sh test
                     """
                 }     
