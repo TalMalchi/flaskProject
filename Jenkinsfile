@@ -27,11 +27,11 @@ pipeline{
 
         }
         stage('Push'){
-            '
+            
             steps{
                 
                 sh """
-                    echo 'Pushing To DockerHub...
+                    echo 'Pushing To DockerHub...'
                     docker push talmalchi/flaskapp:latest
                     docker rmi talmalchi/flaskapp:latest #CHECK THIS
 
