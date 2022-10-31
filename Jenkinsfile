@@ -40,14 +40,6 @@ pipeline{
             }
         }
         stage('Test'){
-<<<<<<< Updated upstream
-            
-            steps{      
-                sh """
-                    echo 'Testing...'
-                    bash -x deploy.sh test
-                """
-=======
             echo 'Testing...'
             steps{ 
                 sshagent(['jenkins_ssh']) {
@@ -57,7 +49,6 @@ pipeline{
                     """
                 }     
                 
->>>>>>> Stashed changes
             }
         }
         stage('Deploy'){
