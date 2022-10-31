@@ -42,12 +42,17 @@ pipeline{
         stage('Test'){
             echo 'Testing...'
             steps{ 
-                sshagent(['jenkins_ssh']) {
-                    sh """
-                        ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/id_rsa
-                        bash -x deploy.sh test
-                    """
-                }     
+                sh"""
+                    echo 'Testing...'
+                    bash -x deploy.sh test
+            
+                """
+                // sshagent(['jenkins_ssh']) {
+                //     sh """
+                //         ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/id_rsa
+                //         bash -x deploy.sh test
+                //     """
+                // }     
                 
             }
         }
