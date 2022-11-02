@@ -46,6 +46,7 @@ pipeline{
                         touch test.txt
                         echo 'Testing...'
                         bash -x deploy.sh test
+                    """
                    
                 }          
             }
