@@ -43,9 +43,11 @@ pipeline{
             steps{ 
                 sshagent(credentials:['ec2-user-test']) {
                     sh """
+                         
                         echo 'Testing...'
-                        bash -x deploy.sh
+                        bash -x deploy.sh test
                         """
+
                     
                    
                 }          
@@ -57,7 +59,6 @@ pipeline{
                 sshagent(credentials:['ec2-user-prod']) {
                     sh """
                         echo 'Deploying...'
-                        chmod +x deploy.sh
                         bash -x deploy.sh prod
                     """
             }
