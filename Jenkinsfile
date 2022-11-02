@@ -42,11 +42,8 @@ pipeline{
         stage('Test'){
             steps{ 
                 sshagent(credentials:['ec2-user']) {
-                    sh """
-                        touch test.txt
-                        echo 'Testing...'
-                        bash -x deploy.sh test
-                    """
+                    sh 'ssh -o StrictHostKeyChecking=no ec2-user@test "touch test"'
+                    
                    
                 }          
             }
