@@ -46,7 +46,7 @@ pipeline{
                 //     bash -x deploy.sh test
             
                 // """
-                sshagent(credentials : ['jenkins_ssh']) {
+                sshagent(['ec2-user']) {
                     sh """
                         echo 'Testing...'
                         
