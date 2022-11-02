@@ -44,7 +44,7 @@ pipeline{
                 sshagent(credentials:['ec2-user-test']) {
                     sh """
                         [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                        ssh-keyscan -t rsa @adrdess@ >> ~/.ssh/known_hosts
+                        ssh-keyscan -t rsa test >> ~/.ssh/known_hosts
                         echo 'Testing...'
                         bash -x deploy.sh test
                         """
