@@ -41,13 +41,12 @@ pipeline{
         }
         stage('Test'){
             steps{ 
-                sshagent(['jenkins_ssh']) {
+                sshagent(['ec2-user']) {
                     sh """
                         echo 'Testing...'
                         bash -x deploy.sh test
-                    """
-                }     
-                
+                   """
+                }          
             }
         }
         stage('Deploy'){
