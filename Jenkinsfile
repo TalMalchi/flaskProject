@@ -41,7 +41,7 @@ pipeline{
         }
         stage('Test'){
             steps{ 
-                sshagent(credentials:['ec2-user']) {
+                sshagent(credentials:['ec2-user-test']) {
                     sh 'ssh -o StrictHostKeyChecking=no ec2-user@test "touch test"'
                     
                    
