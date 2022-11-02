@@ -54,12 +54,12 @@ pipeline{
         stage('Deploy'){
             
             steps{
-                
-                sh """
-                    echo 'Deploying...'
-                    chmod +x deploy.sh
-                    bash -x deploy.sh prod
-                """
+                sshagent(credentials:['ec2-user-prod']) {
+                    sh """
+                        echo 'Deploying...'
+                        chmod +x deploy.sh
+                        bash -x deploy.sh prod
+                    """
             }
         }
     }
