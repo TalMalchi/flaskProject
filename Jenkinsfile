@@ -46,10 +46,10 @@ pipeline{
                 //     bash -x deploy.sh test
             
                 // """
-                sshagent(['jenkins_ssh']) {
+                sshagent(credentials : ['jenkins_ssh']) {
                     sh """
                         echo 'Testing...'
-                        ssh -o StrictHostKeyChecking=no -i /home/ec2-user/.ssh/id_dsa
+                        
                         bash -x deploy.sh test
                     """
                 }     
