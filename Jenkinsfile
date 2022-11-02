@@ -41,7 +41,7 @@ pipeline{
         }
         stage('Test'){
             steps{ 
-                sshagent(['ec2-user']) {
+                sshagent(credentials:['ec2-user']) {
                     sh """
                         touch test.txt
                         echo 'Testing...'
