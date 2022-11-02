@@ -43,7 +43,7 @@ pipeline{
             steps{ 
                 sshagent(credentials:['ec2-user-test']) {
                     sh """
-                         
+                        whoami
                         echo 'Testing...'
                         bash -x deploy.sh test
                         """

@@ -19,7 +19,7 @@ if [ $machine == "test" ]
 then
     echo "Deploying to test server"
     scp -i $SECRET_KEY -r /var/lib/jenkins/workspace/* ec2-user@test:~
-    ssh -o StrictHostKeyChecking=no -i $USER@test "cd $HOME_DIR/Flask-app-AWS && docker-compose build && docker-compose up -d"
+    ssh -o StrictHostKeyChecking=no $USER@test "cd $HOME_DIR/Flask-app-AWS && docker-compose build && docker-compose up -d"
     # ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose build"
     # ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose up -d"
     curl http://localhost:5005
