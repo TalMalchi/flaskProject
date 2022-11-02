@@ -49,8 +49,7 @@ pipeline{
                 sshagent(credentials : ['jenkins_ssh']) {
                     sh """
                         echo 'Testing...'
-                        scp -i /home/ec2-user/.ssh/id_dsa -r /var/lib/jenkins/workspace/* ec2-user@test:~
-                        ssh -i /home/ec2-user/.ssh/id_dsa ec2-user@test 
+                        
                         bash -x deploy.sh test
                     """
                 }     
