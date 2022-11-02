@@ -43,11 +43,10 @@ pipeline{
             steps{ 
                 sshagent(['ec2-user']) {
                     sh """
-                        [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                        ssh-keyscan -t rsa test >> ~/.ssh/known_hosts
+                        touch test.txt
                         echo 'Testing...'
                         bash -x deploy.sh test
-                   """
+                   
                 }          
             }
         }
