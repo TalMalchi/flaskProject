@@ -41,10 +41,9 @@ pipeline{
         }
         stage('Test'){
             steps{ 
-                sshagent(credentials:['ec2-user-test']) {
+                sshagent(credentials:['ec2-user']) {
                     sh """
-                        [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                        ssh-keyscan -t rsa test >> ~/.ssh/known_hosts
+                
                         echo 'Testing...'
                         bash -x deploy.sh test
                         """

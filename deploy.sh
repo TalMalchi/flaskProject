@@ -5,7 +5,7 @@
 #Variables
 USER="ec2-user"
 HOME_DIR="/home/ec2-user"
-SECRET_KEY="/home/ec2-user/.ssh/id_rsa"
+SECRET_KEY="/var/lib/jenkins/.ssh/id_dsa"
 machine=$1
 
 
