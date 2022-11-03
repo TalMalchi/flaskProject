@@ -41,7 +41,7 @@ pipeline{
         }
         stage('Test'){
             steps{ 
-                sshagent(credentials:['ec2-user']) {
+                sshagent(['ec2-user']) {
                     sh """
                 
                         echo 'Testing...'
