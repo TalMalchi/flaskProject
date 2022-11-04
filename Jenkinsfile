@@ -41,7 +41,7 @@ pipeline{
         }
         stage('Test'){
             steps{ 
-                sshagent(['ec2-user']) {
+                sshagent(['jenkins-rsa']) {
                     sh """
                 
                         echo 'Testing...'
