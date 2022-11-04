@@ -34,7 +34,10 @@ Each time there is any change in the code, i will commit it to GitHub. Jenkins w
 The first machine will check the changes, and will build a new image- using the docker file (in the BackEnd directory).  
 The new image will push to DockerHub.
 The Test and Production machine will use the ***desploy.sh*** script.
-Jenkins machine will transfer the project to test machine, using scp, and will test the app, then the will pass it to the production machine to desploy the app.      
+Jenkins machine will transfer the project to test machine, using scp, and will test the app, then the will pass it to the production machine to desploy the app.        
+
+<img width="662" alt="Screenshot 2022-11-04 152518" src="https://user-images.githubusercontent.com/93086649/199983523-302ebecd-e0e7-494f-89fc-3b14c3cc1663.png">
+
 
 ### :sparkles: System Desgin   
 
