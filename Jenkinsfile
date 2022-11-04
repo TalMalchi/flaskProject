@@ -39,20 +39,20 @@ pipeline{
                 """
             }
         }
-        stage('Test'){
-            steps{ 
-                sshagent(['jenkins-rsa']) {
-                    sh """
+        // stage('Test'){
+        //     steps{ 
+        //         sshagent(['jenkins-rsa']) {
+        //             sh """
                 
-                        echo 'Testing...'
-                        bash -x deploy.sh test
-                        """
+        //                 echo 'Testing...'
+        //                 bash -x deploy.sh test
+        //                 """
 
                     
                    
-                }          
-            }
-        }
+        //         }          
+        //     }
+        // }
         stage('Deploy'){
             
             steps{
