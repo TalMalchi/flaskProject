@@ -49,7 +49,7 @@ Jenkins machine will transfer the project to test machine, using scp, and will t
 ```python
 - Clone the project 
 - Make sure you have Docker && docker-compose installed on your computer
-- Run on your terminal `docker-compose up`
+- Run on your terminal `docker-compose build` Then `docker-compose up`
 - Open your browser on `localhost:5005`
 ```
 
