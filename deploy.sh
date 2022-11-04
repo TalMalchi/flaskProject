@@ -14,8 +14,12 @@ machine=$1
 # Then do curl to 127.0.0.1 to check if the application is running.
 # Production- deploy to production server. Copy all the files from jenkins workspace to production server and do docker compose up
 
+#check if input is empty, then check if it is test or production
+if [ -z "$machine" ]; then
+    echo "Please enter test or production"
+    exit 1
 
-if [ $machine == "test" ]
+elif [ $machine == "test" ]
 then
     echo "Deploying to test server"
     scp -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/* ec2-user@test:~
