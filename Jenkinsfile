@@ -39,24 +39,24 @@ pipeline{
                 """
             }
         }
-        stage('Test'){
-            steps{ 
-                sshagent(['jenkins-rsa']) {
-                    sh """
+        // stage('Test'){
+        //     steps{ 
+        //         sshagent(['jenkins-rsa']) {
+        //             sh """
                 
-                        echo 'Testing...'
-                        bash -x deploy.sh test
-                        """
+        //                 echo 'Testing...'
+        //                 bash -x deploy.sh test
+        //                 """
 
                     
                    
-                }          
-            }
-        }
+        //         }          
+        //     }
+        // }
         stage('Deploy'){
             
             steps{
-                sshagent(credentials:['ec2-user-prod']) {
+                sshagent(['jenkins-rsa']) {
                     sh """
                         echo 'Deploying...'
                         bash -x deploy.sh prod

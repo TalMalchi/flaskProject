@@ -26,8 +26,8 @@ then
 elif [ $machine == "prod" ]
 then
     echo "Deploying to production server"
-    scp $SECRET_KEY -r /var/lib/jenkins/workspace/* ec2-user@prod:~
-    ssh $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose up"
+    scp $SECRET_KEY /var/lib/jenkins/workspace/* ec2-user@prod:~
+    ssh -o StrictHostKeyChecking=no $USER@prod "cd $HOME_DIR/Flask-app-AWS && docker-compose up"
 else
     echo "Invalid machine"
 fi
