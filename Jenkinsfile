@@ -46,7 +46,7 @@ pipeline{
                 
                         echo 'Testing...'
                         bash -x deploy.sh test
-                        curl http://localhost:5005
+                        
                         """
 
                     
