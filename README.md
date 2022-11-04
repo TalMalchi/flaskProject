@@ -36,12 +36,15 @@ The new image will push to DockerHub.
 The Test and Production machine will use the ***desploy.sh*** script.
 Jenkins machine will transfer the project to test machine, using scp, and will test the app, then the will pass it to the production machine to desploy the app.        
 
-<img width="662" alt="Screenshot 2022-11-04 152518" src="https://user-images.githubusercontent.com/93086649/199983523-302ebecd-e0e7-494f-89fc-3b14c3cc1663.png">
+<img width="800" alt="Screenshot 2022-11-04 152518" src="https://user-images.githubusercontent.com/93086649/199983523-302ebecd-e0e7-494f-89fc-3b14c3cc1663.png">
+
+![Screenshot 2022-11-04 153750](https://user-images.githubusercontent.com/93086649/200024503-c5e20fbe-6b6c-4efd-85b8-7f49f69d28b4.png)
+
 
 
 ### :sparkles: System Desgin   
 
-<img width="600" alt="198629176-ede46079-dd6f-426d-8ff7-54c8960decf2" src="https://user-images.githubusercontent.com/93086649/198629554-efb7969c-3dbd-4ff3-aa89-851131717555.png">
+<img width="700" alt="198629176-ede46079-dd6f-426d-8ff7-54c8960decf2" src="https://user-images.githubusercontent.com/93086649/198629554-efb7969c-3dbd-4ff3-aa89-851131717555.png">
 
 
 
