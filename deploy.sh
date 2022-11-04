@@ -27,7 +27,7 @@ elif [ $machine == "prod" ]
 then
     echo "Deploying to production server"
     #transfer the files from jenkins workspace to production server
-    scp /var/lib/jenkins/workspace/* ec2-user@prod:~
+    scp -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/* ec2-user@prod:~
     #scp /var/lib/jenkins/workspace/* ec2-user@prod:~
     ssh -o StrictHostKeyChecking=no $USER@prod "cd $HOME_DIR/Flask-app-AWS && docker-compose up"
 else
