@@ -18,17 +18,13 @@ machine=$1
 if [ $machine == "test" ]
 then
     echo "Deploying to test server"
-    scp $SECRET_KEY /var/lib/jenkins/workspace/* ec2-user@test:~
+    scp -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/* ec2-user@test:~
     ssh -o StrictHostKeyChecking=no $USER@test "cd $HOME_DIR/Flask-app-AWS && docker-compose build && docker-compose up -d"
-    # ssh  -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose build"
-    # ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose up -d"
     curl http://localhost:5005
 elif [ $machine == "prod" ]
 then
     echo "Deploying to production server"
-    #transfer the files from jenkins workspace to production server
     scp -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/* ec2-user@prod:~
-    #scp /var/lib/jenkins/workspace/* ec2-user@prod:~
     ssh -o StrictHostKeyChecking=no $USER@prod "cd $HOME_DIR/Flask-app-AWS && docker-compose up"
 else
     echo "Invalid machine"
