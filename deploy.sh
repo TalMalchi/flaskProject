@@ -5,7 +5,7 @@
 #Variables
 USER="ec2-user"
 HOME_DIR="/home/ec2-user"
-SECRET_KEY="/var/lib/jenkins/.ssh/id_dsa"
+SECRET_KEY="/home/ec2-user/jenkins"
 machine=$1
 
 
@@ -18,7 +18,7 @@ machine=$1
 if [ $machine == "test" ]
 then
     echo "Deploying to test server"
-    scp /var/lib/jenkins/workspace/* ec2-user@test:~
+    scp $SECRET_KEY -r /var/lib/jenkins/workspace/* ec2-user@test:~
     ssh -o StrictHostKeyChecking=no $USER@test "cd $HOME_DIR/Flask-app-AWS && docker-compose build && docker-compose up -d"
     # ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose build"
     # ssh -i $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose up -d"
@@ -27,7 +27,7 @@ elif [ $machine == "prod" ]
 then
     echo "Deploying to production server"
     scp $SECRET_KEY -r /var/lib/jenkins/workspace/* ec2-user@prod:~
-    ssh -o StrictHostKeyChecking=no $USER@prod "cd $HOME_DIR/Flask-app-AWS && docker-compose up"
+    ssh $SECRET_KEY $USER@$machine "cd $HOME_DIR/Flask-app-AWS && docker-compose up"
 else
     echo "Invalid machine"
 fi
