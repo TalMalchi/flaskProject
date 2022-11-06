@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 import SqlConnection
-import sftp
-import subprocess
+
 app = Flask(__name__)
 sql_connection = SqlConnection.SqlConnetion()
 
