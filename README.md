@@ -30,11 +30,13 @@ I will use 3 seperate aws machine- for Jenkins, for testing, and for production.
 All of the machines will be connect with ssh, and private and public keys.  
 I will create a pipeline using Jenkins, that will build, test and deploy the code automaticly.    
 The purpose of this proccess is to minimize human error and maintain a consistent process for how software is released.   
-Each time there is any change in the code, i will commit it to GitHub. Jenkins will be triggerd by poll SCM, every few minute, and The Jenkins machine will pull the changes from the repository.    
+Each time there is any change in the code, i will commit it to GitHub. Jenkins will be triggerd by poll SCM (every few minute), and Jenkins machine will pull the changes from the repository.    
 The first machine will check the changes, and will build a new image- using the docker file (in the BackEnd directory).  
-The new image will push to DockerHub.
-The Test and Production machine will use the ***desploy.sh*** script.
-Jenkins machine will transfer the project to test machine, using scp, and will test the app, then the will pass it to the production machine to desploy the app.        
+The new image will be push to DockerHub. 
+Then Jenkins machine will transfer the project to test machine, using scp, that will test the app.   
+After all the tests pass, it will pass to production machine to desploy the app.  
+Both Test and Production machine will use the ***desploy.sh*** script.
+         
 
 <img width="800" alt="Screenshot 2022-11-04 152518" src="https://user-images.githubusercontent.com/93086649/199983523-302ebecd-e0e7-494f-89fc-3b14c3cc1663.png">
 
