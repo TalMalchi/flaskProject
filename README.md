@@ -44,7 +44,10 @@ Jenkins machine will transfer the project to test machine, using scp, and will t
 
 ### :sparkles: System Desgin   
 
-<img width="700" alt="198629176-ede46079-dd6f-426d-8ff7-54c8960decf2" src="https://user-images.githubusercontent.com/93086649/198629554-efb7969c-3dbd-4ff3-aa89-851131717555.png">
+<!--<img width="700" alt="198629176-ede46079-dd6f-426d-8ff7-54c8960decf2" src="https://user-images.githubusercontent.com/93086649/198629554-efb7969c-3dbd-4ff3-aa89-851131717555.png">-->
+<img width="800" alt="project diagram" src="https://user-images.githubusercontent.com/93086649/200297592-32963099-f2e8-4a4a-a428-0627d488e90c.png">
+
+
 
 
 
