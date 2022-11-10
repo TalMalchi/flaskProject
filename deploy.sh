@@ -23,7 +23,8 @@ elif [ $machine == "test" ]
 then
     echo "Deploying to test server"
     scp -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/* ec2-user@test:~
-    ssh -o StrictHostKeyChecking=no $USER@test "cd $HOME_DIR/Flask-app-AWS && docker-compose build && docker-compose up -d && curl http://localhost:5005 && docker-compose down"
+    ssh -o StrictHostKeyChecking=no $USER@test "cd $HOME_DIR/Flask-app-AWS && docker pull talmalchi/flaskapp:latest && docker-compose up -d && curl http://localhost:5005 "
+    # ssh -o StrictHostKeyChecking=no $USER@test "cd $HOME_DIR/Flask-app-AWS && docker-compose build && docker-compose up -d && curl http://localhost:5005 && docker-compose down"
     
 elif [ $machine == "prod" ]
 then
