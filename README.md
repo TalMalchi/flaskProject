@@ -23,7 +23,7 @@ My app will connect to the same sql server- using the same database and the same
 - ***db***  - Init the DataBase using MySql. Create new data base, and new table, that will be used by our application.  
 - ***BackEnd*** - Init the application using Flask. Connects to the database, read all the data, post it to the app, and shares it to the browser.   
 - ***templates*** - Represent all the FrontEnd of the app.  
-- ***Test*** - Will check that out app is up before it goes to the production. 
+
 
 ### :infinity: CI/CD  
 I will use 3 seperate aws machine- for Jenkins, for testing, and for production.
